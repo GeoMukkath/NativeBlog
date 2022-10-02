@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet, FlatList, Button } from "react-native";
 import React, { useContext } from "react";
 import BlogContext from "../context/BlogContext";
+import { Feather } from "@expo/vector-icons";
 
 const IndexScreen = () => {
   const { data, addBlogPost } = useContext(BlogContext);
@@ -12,7 +13,12 @@ const IndexScreen = () => {
         data={data}
         keyExtractor={(BlogPost) => BlogPost.title}
         renderItem={({ item }) => {
-          return <Text>{item.title}</Text>;
+          return (
+            <View>
+              <Text>{item.title}</Text>
+              <Feather name="trash" size={24} color="black" />
+            </View>
+          );
         }}
       />
     </View>
