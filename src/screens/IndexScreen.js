@@ -7,14 +7,13 @@ const IndexScreen = () => {
   const { data, addBlogPost } = useContext(BlogContext);
   return (
     <View>
-      <Text>Blog Post</Text>
       <Button title="Add a Blog Post" onPress={addBlogPost} />
       <FlatList
         data={data}
         keyExtractor={(BlogPost) => BlogPost.title}
         renderItem={({ item }) => {
           return (
-            <View>
+            <View style={styles.row}>
               <Text>{item.title}</Text>
               <Feather name="trash" size={24} color="black" />
             </View>
@@ -25,6 +24,15 @@ const IndexScreen = () => {
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  row: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingVertical: 10,
+    paddingHorizontal: 5,
+    borderBottomWidth: 1,
+    borderColor: "lightgrey",
+  },
+});
 
 export default IndexScreen;
