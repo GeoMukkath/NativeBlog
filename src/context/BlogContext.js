@@ -3,8 +3,16 @@ const BlogContext = React.createContext();
 
 const BlogReducer = (state, action) => {
   switch (action.type) {
+    case "delete_blog_post":
+      return state.filter((blogPost) => blogPost.id !== action.payload);
     case "add_blog_post":
-      return [...state, { title: `Blog Post #${state.length + 1}` }];
+      return [
+        ...state,
+        {
+          id: Math.floor(Math.random() * 99999),
+          title: `Blog Post #${state.length + 1}`,
+        },
+      ];
     default:
       return state;
   }
@@ -17,8 +25,14 @@ export const BlogProvider = ({ children }) => {
     dispatch({ type: "add_blog_post" });
   };
 
+  const deleteBlogPost = (id) => {
+    dispatch({ type: "delete_blog_post", payload: id });
+  };
+
   return (
-    <BlogContext.Provider value={{ data: BlogPosts, addBlogPost }}>
+    <BlogContext.Provider
+      value={{ data: BlogPosts, addBlogPost, deleteBlogPost }}
+    >
       {children}
     </BlogContext.Provider>
   );
