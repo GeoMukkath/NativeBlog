@@ -15,25 +15,24 @@ const IndexScreen = () => {
   const { data, addBlogPost, deleteBlogPost } = useContext(BlogContext);
   return (
     <View>
-      <ScrollView>
-        <Button title="Add a Blog Post" onPress={addBlogPost} />
-        <FlatList
-          data={data}
-          keyExtractor={(BlogPost) => BlogPost.title}
-          renderItem={({ item }) => {
-            return (
-              <View style={styles.row}>
-                <Text>
-                  {item.title} - {item.id}
-                </Text>
-                <TouchableOpacity onPress={() => deleteBlogPost(item.id)}>
-                  <Feather name="trash" size={24} color="black" />
-                </TouchableOpacity>
-              </View>
-            );
-          }}
-        />
-      </ScrollView>
+      <Button title="Add a Blog Post" onPress={addBlogPost} />
+      <FlatList
+        scrollEnabled={true}
+        data={data}
+        keyExtractor={(BlogPost) => BlogPost.title}
+        renderItem={({ item }) => {
+          return (
+            <View style={styles.row}>
+              <Text>
+                {item.title} - {item.id}
+              </Text>
+              <TouchableOpacity onPress={() => deleteBlogPost(item.id)}>
+                <Feather name="trash" size={24} color="black" />
+              </TouchableOpacity>
+            </View>
+          );
+        }}
+      />
     </View>
   );
 };
