@@ -22,7 +22,9 @@ const IndexScreen = ({ navigation }) => {
         keyExtractor={(BlogPost) => BlogPost.title}
         renderItem={({ item }) => {
           return (
-            <TouchableOpacity onPress={() => navigation.navigate("Show")}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Show", { id: item.id })}
+            >
               <View style={styles.row}>
                 <Text>
                   {item.title} - {item.id}

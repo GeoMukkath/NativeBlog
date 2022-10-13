@@ -1,10 +1,13 @@
 import { View, Text } from "react-native";
-import React from "react";
+import React, { useContext } from "react";
+import BlogContext from "../context/BlogContext";
 
-const ShowScreen = () => {
+const ShowScreen = ({ navigation, route }) => {
+  const { data } = useContext(BlogContext);
+  const blogPost = data.find((blogPost) => blogPost.id === route.params.id);
   return (
     <View>
-      <Text>Show Screen</Text>
+      <Text>{blogPost.title}</Text>
     </View>
   );
 };
