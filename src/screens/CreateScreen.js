@@ -2,7 +2,7 @@ import { View, Text, TextInput, StyleSheet, Button } from "react-native";
 import React, { useContext, useState } from "react";
 import BlogContext from "../context/BlogContext";
 
-const CreateScreen = () => {
+const CreateScreen = ({ navigation }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const { addBlogPost } = useContext(BlogContext);
@@ -27,7 +27,11 @@ const CreateScreen = () => {
       </View>
       <Button
         title="Add Blog Post"
-        onPress={() => addBlogPost(title, content)}
+        onPress={() =>
+          addBlogPost(title, content, () => {
+            navigation.navigate("Blogs");
+          })
+        }
       />
     </View>
   );

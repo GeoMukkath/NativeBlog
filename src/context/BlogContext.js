@@ -22,8 +22,9 @@ const BlogReducer = (state, action) => {
 export const BlogProvider = ({ children }) => {
   const [BlogPosts, dispatch] = useReducer(BlogReducer, []);
 
-  const addBlogPost = (title, content) => {
+  const addBlogPost = (title, content, callback) => {
     dispatch({ type: "add_blog_post", payload: { title, content } });
+    callback();
   };
 
   const deleteBlogPost = (id) => {
