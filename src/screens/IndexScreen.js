@@ -15,7 +15,6 @@ const IndexScreen = ({ navigation }) => {
   const { data, addBlogPost, deleteBlogPost } = useContext(BlogContext);
   return (
     <View>
-      <Button title="Add a Blog Post" onPress={addBlogPost} />
       <FlatList
         scrollEnabled={true}
         data={data}
