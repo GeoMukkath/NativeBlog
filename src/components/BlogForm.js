@@ -2,9 +2,9 @@ import { View, Text, TextInput, StyleSheet, Button } from "react-native";
 import React, { useContext, useState } from "react";
 import BlogContext from "../context/BlogContext";
 
-const BlogForm = ({ onSubmit }) => {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+const BlogForm = ({ onSubmit, initialValues }) => {
+  const [title, setTitle] = useState(initialValues.title);
+  const [content, setContent] = useState(initialValues.content);
 
   return (
     <View style={Styles.container}>
@@ -24,9 +24,21 @@ const BlogForm = ({ onSubmit }) => {
           onChangeText={(content) => setContent(content)}
         />
       </View>
-      <Button title="Add Blog Post" onPress={() => onSubmit(title, content)} />
+      <Button
+        title="Save Blog Post"
+        onPress={() =>
+          onSubmit(title, content, () => console.log(title, content))
+        }
+      />
     </View>
   );
+};
+
+BlogForm.defaultProps = {
+  initialValues: {
+    title: "",
+    content: "",
+  },
 };
 
 const Styles = StyleSheet.create({
