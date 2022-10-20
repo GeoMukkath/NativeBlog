@@ -16,6 +16,10 @@ const IndexScreen = ({ navigation }) => {
 
   useEffect(() => {
     getBlogPosts();
+
+    navigation.addListener("didFocus", () => {
+      getBlogPosts();
+    });
   }, []);
 
   return (
@@ -30,9 +34,7 @@ const IndexScreen = ({ navigation }) => {
               onPress={() => navigation.navigate("Show", { id: item.id })}
             >
               <View style={styles.row}>
-                <Text>
-                  {item.title} - {item.id}
-                </Text>
+                <Text>{item.title}</Text>
                 <TouchableOpacity onPress={() => deleteBlogPost(item.id)}>
                   <Feather name="trash" size={24} color="black" />
                 </TouchableOpacity>
