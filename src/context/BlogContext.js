@@ -22,7 +22,6 @@ export const BlogProvider = ({ children }) => {
 
   const getBlogPosts = async () => {
     const response = await jsonServer.get("/blogposts");
-    console.log(response.data);
     dispatch({ type: "get_blog_posts", payload: response.data });
   };
 
