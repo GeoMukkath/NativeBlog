@@ -7,12 +7,17 @@ import {
   ScrollView,
   TouchableOpacity,
 } from "react-native";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import BlogContext from "../context/BlogContext";
 import { Feather } from "@expo/vector-icons";
 
 const IndexScreen = ({ navigation }) => {
-  const { data, addBlogPost, deleteBlogPost } = useContext(BlogContext);
+  const { data, deleteBlogPost, getBlogPosts } = useContext(BlogContext);
+
+  useEffect(() => {
+    getBlogPosts();
+  }, []);
+
   return (
     <View>
       <FlatList
