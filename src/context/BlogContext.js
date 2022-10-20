@@ -39,7 +39,8 @@ export const BlogProvider = ({ children }) => {
     dispatch({ type: "delete_blog_post", payload: id });
   };
 
-  const editBlogPost = (id, title, content, callback) => {
+  const editBlogPost = async (id, title, content, callback) => {
+    await jsonServer.put(`/blogposts/${id}`, { title, content });
     dispatch({ type: "edit_blog_post", payload: { id, title, content } });
     if (callback) {
       callback();
