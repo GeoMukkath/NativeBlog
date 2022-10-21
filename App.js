@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { View, Text, Button, TouchableOpacity } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, DefaultTheme } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import IndexScreen from "./src/screens/IndexScreen";
 import { BlogProvider } from "./src/context/BlogContext";
@@ -14,9 +14,12 @@ import BlogForm from "./src/components/BlogForm";
 
 const Stack = createNativeStackNavigator();
 
+const navTheme = DefaultTheme;
+navTheme.colors.background = "#fff";
+
 const App = () => {
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={navTheme}>
       <Stack.Navigator>
         <Stack.Screen
           name="Blogs"
@@ -27,6 +30,7 @@ const App = () => {
                 <Feather
                   name="plus"
                   size={47}
+                  color="blue"
                   onPress={() => navigation.navigate("Create")}
                 />
               </TouchableOpacity>

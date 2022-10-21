@@ -10,6 +10,7 @@ import {
 import React, { useContext, useEffect } from "react";
 import BlogContext from "../context/BlogContext";
 import { Feather } from "@expo/vector-icons";
+import styled from "styled-components";
 
 const IndexScreen = ({ navigation }) => {
   const { data, deleteBlogPost, getBlogPosts } = useContext(BlogContext);
@@ -34,9 +35,9 @@ const IndexScreen = ({ navigation }) => {
               onPress={() => navigation.navigate("Show", { id: item.id })}
             >
               <View style={styles.row}>
-                <Text>{item.title}</Text>
+                <Text style={styles.text}>{item.title}</Text>
                 <TouchableOpacity onPress={() => deleteBlogPost(item.id)}>
-                  <Feather name="trash" size={24} color="black" />
+                  <Feather name="trash" size={24} color="blue" />
                 </TouchableOpacity>
               </View>
             </TouchableOpacity>
@@ -62,9 +63,16 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     paddingVertical: 10,
-    paddingHorizontal: 5,
-    borderBottomWidth: 1,
-    borderColor: "lightgrey",
+    paddingHorizontal: 15,
+    borderWidth: 1,
+    borderColor: "blue",
+    marginTop: 10,
+    marginLeft: 7,
+    marginRight: 7,
+  },
+  text: {
+    color: "blue",
+    marginBottom: 5,
   },
 });
 
