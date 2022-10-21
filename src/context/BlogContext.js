@@ -27,7 +27,8 @@ export const BlogProvider = ({ children }) => {
 
   const addBlogPost = async (title, content, callback) => {
     await jsonServer.post("/blogposts", { title, content });
-    dispatch({ type: "add_blog_post", payload: { title, content } });
+    const response = await jsonServer.get("/blogposts");
+    dispatch({ type: "get_blog_posts", payload: response.data });
     if (callback) {
       callback();
     }
