@@ -5,6 +5,8 @@ It is made with React Native and can be hosted with a ngrok server locally.
 
 Blue Blog can be used for personal blogging and can act as a logger to quickly log information. The interface is easy to the eyes and has a striking retro look to it. 
 
+![](https://github.com/GeoMukkath/NativeBlog/blob/main/demo.gif)
+
 Steps to use Blue Blog: 
 1. Clone the reporsitory to your local machine. 
 2. Install dependencies with `npm i`
