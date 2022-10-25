@@ -8,7 +8,7 @@ Blue Blog can be used for personal blogging and can act as a logger to quickly l
 ![](https://github.com/GeoMukkath/NativeBlog/blob/main/demo.gif)
 
 Steps to use Blue Blog: 
-1. Clone the reporsitory to your local machine. 
+1. Clone the repo to your local machine. 
 2. Install dependencies with `npm i`
 3. To run locally use Android/iOS emulator with `npm run android` or `npm run ios`
 4. You can also use expo to run Blue Blogs on your personal device. 
